@@ -252,7 +252,7 @@ $(document).ready(function() {
                         }
                         volume /= dataArray.length;
 
-                        var threshold = 70;
+                        var threshold = 100;
                         console.log(volume)
                         if (volume > threshold) {
                             flameOff();
@@ -296,11 +296,30 @@ $(document).ready(function() {
                 }else {
                     friendName = friendName.charAt(0).toUpperCase() + friendName.slice(1);
                 }
+                var imgMinions = $("<img>").attr("src", "minion.gif");
+                var imgOlaf = $("<img>").attr("src", "olaf.gif");
 
                 setTimeout(function() {
-                    txt.hide().html("<br>Happy Birthday "+ "<br>" + friendName + "!").delay(750).fadeIn(300);
+
+                    txt.hide();
+                    txt.html("Happy Birthday " + "<br>" + friendName + "!<br>");
+
+                    txt.append(imgMinions);
+                    txt.delay(750).fadeIn(300);
                     document.querySelector('.candle').style.display = 'none';
+
+                    setTimeout(function() {
+                        txt.find('img').replaceWith(imgOlaf);
+                    }, 15000);
+                    setTimeout(function() {
+                        txt.hide();
+                        txt.html("<br><br><br>Have a nice day :)");
+                        txt.delay(750).fadeIn(300);
+
+                    }, 18000);
                 }, 7000);
+
+
                 $("#candle").animate(
                     {
                         opacity: ".5"

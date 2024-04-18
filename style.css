@@ -700,3 +700,12 @@ h2 {
   -webkit-user-select: none;
   user-select: none;
 }
+
+.gifs {
+  text-align: center;
+}
+
+.gifs img {
+  display: block;
+  margin: 0 auto;
+}
