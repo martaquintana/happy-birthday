@@ -709,3 +709,10 @@ h2 {
   display: block;
   margin: 0 auto;
 }
+
+#videoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 125vh; 
+}

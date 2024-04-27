@@ -200,6 +200,33 @@ function reveal() {
 }
 var isFlameOff = false;
 
+
+
+function loadVideo() {
+  // ID del video de YouTube
+  var videoId = 'RaeLAwacDG4'; // Cambia 'VIDEO_ID' por el ID del video de YouTube
+
+  // URL del video de YouTube con el parámetro 'modestbranding=1' para ocultar el logo de YouTube
+  var url = 'https://www.youtube.com/embed/' + videoId + '?modestbranding=1&autoplay=1&controls=0&showinfo=0&rel=0';
+
+  // Crear el elemento iframe
+  var iframe = document.createElement('iframe');
+  iframe.width = '560'; // Ancho del video
+  iframe.height = '315'; // Altura del video
+  iframe.frameborder = '0';
+  iframe.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
+  iframe.allowfullscreen = true;
+  iframe.src = url;
+
+  // Obtener el contenedor del video
+  var videoContainer = document.getElementById('videoContainer');
+
+  // Limpiar el contenedor antes de agregar el nuevo video
+  videoContainer.innerHTML = '';
+
+  // Agregar el iframe al contenedor
+  videoContainer.appendChild(iframe);
+}
 $(document).ready(function() {
   var merrywrap = document.getElementById("merrywrap");
   var box = merrywrap.getElementsByClassName("giftbox")[0];
@@ -252,7 +279,7 @@ $(document).ready(function() {
                         }
                         volume /= dataArray.length;
 
-                        var threshold = 100;
+                        var threshold = 10;
                         console.log(volume)
                         if (volume > threshold) {
                             flameOff();
@@ -296,27 +323,33 @@ $(document).ready(function() {
                 }else {
                     friendName = friendName.charAt(0).toUpperCase() + friendName.slice(1);
                 }
-                var imgMinions = $("<img>").attr("src", "minion.gif");
-                var imgOlaf = $("<img>").attr("src", "olaf.gif");
+                var imgMinions = $("<img>").attr("src", "images/minion.gif");
+                var imgOlaf = $("<img>").attr("src", "images/olaf.gif");
 
                 setTimeout(function() {
 
                     txt.hide();
                     txt.html("Happy Birthday " + "<br>" + friendName + "!<br>");
+                    loadVideo();
 
-                    txt.append(imgMinions);
                     txt.delay(750).fadeIn(300);
                     document.querySelector('.candle').style.display = 'none';
 
                     setTimeout(function() {
-                        txt.find('img').replaceWith(imgOlaf);
-                    }, 15000);
+                      var video = document.getElementById('videoContainer');
+                      if (video) {
+                          video.remove(); // Eliminar el iframe del DOM
+                      }    
+                    }, 41500);
+                    setTimeout(function() {
+                        txt.append(imgOlaf);
+                    }, 42000);
                     setTimeout(function() {
                         txt.hide();
                         txt.html("<br><br><br>Have a nice day :)");
                         txt.delay(750).fadeIn(300);
 
-                    }, 18000);
+                    }, 45000);
                 }, 7000);
 
 
