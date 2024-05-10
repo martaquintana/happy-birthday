@@ -279,7 +279,7 @@ $(document).ready(function() {
                         }
                         volume /= dataArray.length;
 
-                        var threshold = 100;
+                        var threshold = 200;
                         console.log(volume)
                         if (volume > threshold) {
                             flameOff();
